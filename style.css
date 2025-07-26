@@ -1,0 +1,38 @@
+/* ✨ simple dark/light‑mode friendly styling */
+
+html,body{
+    margin:0;
+    font-family: system-ui, sans-serif;
+    background:#0d1117;
+    color:#f0f6fc;
+  }
+  
+  header{ text-align:center; padding:1rem 0; }
+  
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap:1rem;
+    padding:1rem;
+  }
+  
+  figure{ margin:0; text-align:center; }
+  figure img{
+    width:100%;
+    height:auto;
+    background:#161b22;
+    border-radius:8px;
+    padding:4px;
+  }
+  figcaption{
+    margin-top:.25rem;
+    font-size:.875rem;
+    word-break:break-word;
+  }
+  
+  /* light‑mode override */
+  @media (prefers-color-scheme: light){
+    body{ background:#ffffff; color:#24292e; }
+    figure img{ background:#f6f8fa; }
+  }
+  
