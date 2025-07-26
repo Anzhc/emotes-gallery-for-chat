@@ -6,8 +6,8 @@
    ------------------------------------------------- */
 
 /* 1️⃣  YOUR SETTINGS */
-const OWNER  = 'your-username';     // GitHub username or org
-const REPO   = 'emote-gallery';     // Repository name
+const OWNER  = 'Anzhc';     // GitHub username or org
+const REPO   = 'emotes-gallery-for-chat';     // Repository name
 const BRANCH = 'main';              // Branch GitHub Pages deploys from
 
 /* 2️⃣  API URL built from the settings above */
@@ -33,7 +33,7 @@ async function loadEmotes() {
 
   } catch (err) {
     console.error(err);
-    gallery.textContent = '⚠️ Could not load emotes';
+    gallery.textContent = '⚠️ Could not load emotes';
   }
 }
 
