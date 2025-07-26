@@ -6,8 +6,8 @@
    ------------------------------------------------- */
 
 /* 1️⃣  YOUR SETTINGS */
-const OWNER  = 'Anzhc';     // GitHub username or org
-const REPO   = 'emotes-gallery-for-chat';     // Repository name
+const OWNER  = 'your-username';     // GitHub username or org
+const REPO   = 'emote-gallery';     // Repository name
 const BRANCH = 'main';              // Branch GitHub Pages deploys from
 
 /* 2️⃣  API URL built from the settings above */
@@ -45,13 +45,31 @@ function stripExtension(filename) {
 function addEmote(src, name) {
   const fig = document.createElement('figure');
 
+  /* image ------------------------------------------------ */
   const img = document.createElement('img');
   img.src = src;
   img.alt = name;
 
-  const cap = document.createElement('figcaption');
-  cap.textContent = name;
+  /* caption row: “:name:” + copy button ------------------ */
+  const cap   = document.createElement('figcaption');
+  const label = document.createElement('span');
+  label.textContent = `:${name}:`;
 
+  const btn = document.createElement('button');
+  btn.className = 'copy-btn';
+  btn.type = 'button';
+  btn.setAttribute('aria-label', `Copy :${name}:`);
+  btn.innerHTML = '&#128203;';          // 📋 clipboard emoji
+
+  btn.addEventListener('click', () => {
+    const text = `:${name}:`;
+    navigator.clipboard.writeText(text).then(() => {
+      btn.classList.add('copied');      // green flash
+      setTimeout(() => btn.classList.remove('copied'), 1000);
+    });
+  });
+
+  cap.append(label, btn);
   fig.append(img, cap);
   gallery.append(fig);
 }
