@@ -12,7 +12,7 @@ html,body{
     gap:1rem;
     padding:1rem;
   
-    /* Make as many 96‑px tracks as will fit in the row         */
+    /* as many 96‑px tracks as will fit in the row             */
     grid-template-columns:repeat(auto-fit,minmax(96px,1fr));
     justify-items:center;
   }
@@ -30,37 +30,22 @@ html,body{
     background:#161b22;           /* frame for transparent PNG/GIF */
     border-radius:8px;
     padding:4px;
+    cursor:pointer;               /* whole image is clickable      */
+    transition:transform .1s, box-shadow .1s;
   }
   
-  /* -- caption row: name + copy button --------------------- */
+  figure img:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 0 2px #58a6ff; /* blue glow on hover            */
+  }
+  
+  figure img.copied{
+    box-shadow:0 0 0 3px #238636; /* green flash after copy        */
+  }
+  
   figcaption{
     margin-top:.25rem;
     font-size:.75rem;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:.25rem;                   /* space between name and button */
     word-break:break-word;
   }
-  
-  /* ===== copy‑to‑clipboard button ========================= */
-  .copy-btn{
-    width:18px;
-    height:18px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:11px;               /* small clipboard emoji */
-    background:#30363d;
-    color:#c9d1d9;
-    border:none;
-    border-radius:4px;
-    cursor:pointer;
-    transition:background .15s;
-  }
-  
-  .copy-btn:hover{ background:#58a6ff; }   /* blue on hover   */
-  .copy-btn.copied{ background:#238636; }  /* green on copy   */
-  
-  .copy-btn:focus{ outline:2px solid #58a6ff; outline-offset:2px; }
   

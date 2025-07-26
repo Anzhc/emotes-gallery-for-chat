@@ -50,26 +50,19 @@ function addEmote(src, name) {
   img.src = src;
   img.alt = name;
 
-  /* caption row: “:name:” + copy button ------------------ */
-  const cap   = document.createElement('figcaption');
-  const label = document.createElement('span');
-  label.textContent = `:${name}:`;
-
-  const btn = document.createElement('button');
-  btn.className = 'copy-btn';
-  btn.type = 'button';
-  btn.setAttribute('aria-label', `Copy :${name}:`);
-  btn.innerHTML = '&#128203;';          // 📋 clipboard emoji
-
-  btn.addEventListener('click', () => {
+  /* click‑to‑copy logic ---------------------------------- */
+  img.addEventListener('click', () => {
     const text = `:${name}:`;
     navigator.clipboard.writeText(text).then(() => {
-      btn.classList.add('copied');      // green flash
-      setTimeout(() => btn.classList.remove('copied'), 1000);
+      img.classList.add('copied');                 // green flash
+      setTimeout(() => img.classList.remove('copied'), 1000);
     });
   });
 
-  cap.append(label, btn);
+  /* caption --------------------------------------------- */
+  const cap = document.createElement('figcaption');
+  cap.textContent = `:${name}:`;
+
   fig.append(img, cap);
   gallery.append(fig);
 }
